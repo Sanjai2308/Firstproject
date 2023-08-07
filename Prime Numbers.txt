@@ -1,0 +1,86 @@
+
+using Assignment;
+
+// Creating the instance of Mathematical Class
+PrimeNumbers objectRefference = new PrimeNumbers(); 
+
+// Giving a message to the user to enter the input
+Console.WriteLine("Enter a number in between you want Prime NUmbers");
+
+// Reading and storing the user input
+int input = int.Parse(Console.ReadLine());
+
+// Calling a method with the help of Object Refference
+objectRefference.getPrimeNumbers(input);
+
+// Storing the List object returning by the method
+List<int> primeNumbers = objectRefference.getPrimeNumbers(input);
+
+//iterating the objects present in the list to the print statement
+foreach (int primeNumber in primeNumbers) { 
+    Console.WriteLine(primeNumber);
+}
+
+-------------------------------------------------------------------------
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment
+{
+    public class PrimeNumbers
+    {
+        /// <summary>
+        /// Checks the prime numbers betwwen the range, stores in List and returns a list object
+        /// </summary>
+        /// <param name="limit"></param>
+        /// <returns></returns>
+        public List<int> getPrimeNumbers(int limit)
+        {
+            // Creating the List<int> to store prime numbers
+            List<int> primeNumbers = new List<int>();   
+
+            for (int number = 1; number <= limit; number++)
+            {
+
+                if (isPrime(number))
+                {
+                    primeNumbers.Add(number);
+
+                }
+
+            }
+            // Returns a List object to the called method
+            return primeNumbers;
+        }
+
+
+        /// <summary>
+        /// Checks the passed number is Prime or not
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+
+        // This method checks whether the passed number is divisible by any of the number which is less than half of the passed number
+        public  bool isPrime(int number) 
+        {
+            // Logic to check prime or not
+            bool prime = true;
+            for (int divider = 2; divider <= number/2; divider++)
+            {
+                if (number % divider == 0) 
+                { 
+                    prime = false;
+                    break;
+                }
+            }
+
+            // Returning the boolean value for the called method statement
+            return prime;
+        }
+    }
+}

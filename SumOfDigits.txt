@@ -1,0 +1,45 @@
+using Assignment;
+
+// Creating the instance of Mathematical Class
+SumOfDigits objectRefference = new SumOfDigits();
+
+// Giving a message to the user to enter the input
+Console.WriteLine("Enter the number to get sum of its digits");
+
+// Reading and storing the user input
+int input = int.Parse(Console.ReadLine());
+
+// Calling a method with the help of Object Refference
+objectRefference.getSumOfDigits(input);
+
+----------------------------------------------------------------
+
+namespace Assignment
+{
+    public class SumOfDigits
+    {
+
+        /// <summary>
+        /// Gives you the sum of digits present in the number
+        /// </summary>
+        /// <param name="input"></param>
+        public void getSumOfDigits(int input)
+        { 
+            int number = input;
+            int sumOfDigits = 0;
+
+            while (number > 0)
+            {
+                
+                int reminder = number % 10;
+                sumOfDigits = sumOfDigits + reminder;
+                number = number / 10;
+            }
+
+            //printing the result
+            Console.WriteLine("The sum of digits is : " + sumOfDigits);
+        }
+    }
+
+}
+

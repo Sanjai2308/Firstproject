@@ -1,0 +1,134 @@
+using Assignment;
+
+// object creation statement
+SalesAndCommission objectRefference = new SalesAndCommission();
+
+// giving  a message to the user to pass the first month sale value
+Console.WriteLine("Enter the first month sale value !");
+int firstValue = int.Parse(Console.ReadLine());
+
+// giving  a message to the user to pass the second month sale value
+Console.WriteLine("Enter the second month sale value !");
+int secondValue = int.Parse(Console.ReadLine());
+
+// giving  a message to the user to pass the third month sale value
+Console.WriteLine("Enter the third month sale value !");
+int thirdValue = int.Parse(Console.ReadLine());
+
+//storing the value returning by the method
+int overAllCommission= objectRefference.getOverAllCommission(firstValue, secondValue, thirdValue);
+
+//printing the value
+Console.WriteLine("The Overall Commission for the given 3 month sale data is : "+overAllCommission);
+
+--------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment
+{                                     
+    public class SalesAndCommission
+    {
+
+         // creating a global variable to use them in methods
+         int quarterSale;
+         int targetSale = 5000;
+
+
+        /// <summary>
+        /// Gives you a overall commission value for the three month sale according to the conditions.
+        /// </summary>
+        /// <param name="month1Sale"></param>
+        /// <param name="month2Sale"></param>
+        /// <param name="month3Sale"></param>
+        /// <returns></returns>
+        public int getOverAllCommission(int month1Sale, int month2Sale, int month3Sale) 
+        {  
+           // initiating the global variable - quarterSale
+           this.quarterSale= month1Sale+month2Sale+month3Sale;
+
+          // calling the methods to get the commission percentage to find overall commission
+          int CommissionOnQuarter = getSalesCommisionOnQuarterBasis(month1Sale, month2Sale, month3Sale);
+          int CommissionOnMonth = getSalesCommissionOnMonthlyMinSales(month1Sale, month2Sale, month3Sale);
+          int CommissionPercentage = CommissionOnQuarter+CommissionOnMonth;
+          
+
+          // calculating overall commission with the total commission percentage
+          int OverallCommission = (quarterSale/100) * CommissionPercentage;
+
+          // rturning the commission value to the called method
+          return OverallCommission;
+
+        }
+
+        /// <summary>
+        /// Gives you the Commsission percentage value on quarter basis according to the condition
+        /// </summary>
+        /// <param name="month1Sale"></param>
+        /// <param name="month2Sale"></param>
+        /// <param name="month3Sale"></param>
+        /// <returns></returns>
+        public int getSalesCommisionOnQuarterBasis(int month1Sale, int month2Sale, int month3Sale)
+        {
+            // initiating the commission percentage by creating the variable
+            int quarterCommissionPercentage = 0;
+            
+            // commission paercentage values 
+            int commissionLevel1 = 12;
+            int commissionLevel2 = 10;
+            int commissionLevel3 = 5;
+            int commissionLevel4 = 0;
+
+
+            // checking with the conditions
+            if (quarterSale >= 20000)
+            {
+                quarterCommissionPercentage = commissionLevel1;
+
+            }
+            else if (quarterSale >= 15000 && quarterSale < 20000)
+            {
+                quarterCommissionPercentage = commissionLevel2;
+            }
+            else if (quarterSale >= 10000 && quarterSale < 15000)
+            {
+                quarterCommissionPercentage = commissionLevel3;
+            }
+            else if (quarterSale < 10000)
+            {
+                quarterCommissionPercentage = commissionLevel4;
+            }
+
+            //returning the commission percentage value
+            return quarterCommissionPercentage;
+        
+        }
+
+        /// <summary>
+        /// Gives you the Commsission percentage value on monthly basis according to the target value statement
+        /// </summary>
+        /// <param name="month1Sale"></param>
+        /// <param name="month2Sale"></param>
+        /// <param name="month3Sale"></param>
+        /// <returns></returns>
+        public int getSalesCommissionOnMonthlyMinSales(int month1Sale, int month2Sale, int month3Sale)
+        {
+            // initializing statements
+            int commissionOnMonthlySale = 0;
+            int commissionLevel = 3;
+
+            //checking with the conditions 
+            if (month1Sale >= targetSale && month2Sale >= targetSale && month3Sale >= targetSale)
+            {
+                commissionOnMonthlySale = commissionLevel;
+            }
+
+            //returning the percentage value
+            return commissionOnMonthlySale;
+        }
+    }
+}

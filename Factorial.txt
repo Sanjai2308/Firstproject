@@ -1,0 +1,74 @@
+using Assignment;
+
+//creating the instance of Factorial class
+Factorial objref = new Factorial();
+
+// Giving a message to the user to pass a Value
+Console.WriteLine("Enter the number which in between you want Factorial values");
+
+// Reading and storing the input which is given from the user
+int input = int.Parse(Console.ReadLine());
+
+//Storing the list object returning by calling a method
+List<int> factorialValues = objref.getFactorialValue(input);
+
+// iterating the values from the List and to print
+foreach (int factorialValue in factorialValues)
+{
+    Console.WriteLine(factorialValue);
+}
+
+----------------------------------------------------------------------------------
+
+using Assignment;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment
+{
+        public class Factorial
+        { 
+        /// <summary>
+        /// Gives the factorial values of each number between 1 to the number you passed
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        
+        // Creating a List return type method to find the Factorial values and to store it in List
+        public List<int> getFactorialValue(int value)
+        {
+            //creating a List<int> to store factorial values
+            List<int> factorialNumbers = new List<int>();
+
+            //creating a loop to perform repeatative task to find factorial value and store it to the Lis<int>
+            for (int number = 1; number <= value; number++)
+            {
+                // logic to find the factorial
+                int inputNumber = number;
+          	int factorial = 1;
+
+                while (inputNumber > 0)
+                {
+                    factorial = factorial * inputNumber;
+                    inputNumber--;
+                }
+
+                //adding the factorial value into the list through add method
+                factorialNumbers.Add(factorial);    
+
+            }
+
+            //returning the factorial valuelist to the called method statement
+            return factorialNumbers;
+        }
+    }
+}
+
+
+
+
+
+

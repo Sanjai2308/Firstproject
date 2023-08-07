@@ -1,0 +1,62 @@
+using Assignment;
+
+// Creating the instance of Mathematical Class
+Palindrome objectRefference = new Palindrome();
+
+// Giving a message to the user to enter the input
+Console.WriteLine("Enter the String value to check Palindrome ");
+
+// Reading and storing the user input
+string input = Console.ReadLine();
+
+// Calling a method with the help of Object Refference
+objectRefference.CheckPalindrome(input);
+
+----------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment
+{
+    public class Palindrome
+    {
+
+        /// <summary>
+        /// Reverse the passed string and campares with the original string and says it is Palindrome or not
+        /// </summary>
+        /// <param name="key"></param>
+        public void CheckPalindrome(String key)
+        {
+            // Converting the passed string to character using ToCharArray(), storing in array helps to reverse it by accessing each character.
+            char[] charArray = key.ToCharArray();
+
+            // Creating an empty string to the reversed characters
+            String reversedString = "";
+
+            // Loop to get characters in the reverse order
+            for (int i = charArray.Length - 1; i >= 0; i--)
+            {
+                reversedString = reversedString + charArray[i];
+            }
+
+            Console.WriteLine("Eneterd String : " + key);
+            Console.WriteLine("Reversed String : " + reversedString);
+
+            // Comapring the reversed string and the original string for the result
+            // Using equals() to validate
+            if (reversedString.Equals(key))
+            {
+                Console.WriteLine("The enterd string is Plaindrome");
+            }
+            else
+            {
+                Console.WriteLine("The enterd string is not Palindrome");
+            }
+
+        }
+    }
+}

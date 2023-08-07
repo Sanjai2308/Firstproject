@@ -1,0 +1,60 @@
+using Assignment;
+
+
+// Creating the instance of Mathematical Class
+MathematicalTable objectRefference = new MathematicalTable();
+
+// Giving a message to the user to enter the input
+Console.WriteLine("Enter the number for which you need Multiplication Output");
+
+// Reading and storing the user input
+int input = int.Parse(Console.ReadLine());
+
+// Giving a message to the user to enter the  second input
+Console.WriteLine("Enter a number upto where you want the Table");
+
+// Reading and storing the user second input
+objectRefference.limit = int.Parse(Console.ReadLine());
+
+// Calling a method with the help of Object Refference
+objectRefference.getMathematicalTable(input);
+
+----------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+namespace Assignment
+{
+    public class MathematicalTable
+    {
+        // Declaring the global variable to make it accesible and to initialize it according to the user input
+        public int limit;
+
+        /// <summary>
+        /// Gives you the mathematical table for the passed inputs
+        /// </summary>
+        /// <param name="number"></param>
+        
+        // Creating the method to form an Table by calling it from the main class
+        public void getMathematicalTable(int number )
+            {
+                // loop for achieving the output
+                for (int firstNumber = 1; firstNumber <= limit; firstNumber++)
+                {
+                    int product = firstNumber * number;
+                    Console.WriteLine(firstNumber + "x" + number + "=" + product);
+                }
+
+            }
+       
+
+    }
+}
+
